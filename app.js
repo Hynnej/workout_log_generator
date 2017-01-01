@@ -7,7 +7,7 @@ var express          = require( 'express' )
   , cookieParser     = require( 'cookie-parser' )
   , session          = require( 'express-session' )
   , RedisStore       = require( 'connect-redis' )( session )
-  , GoogleStrategy   = require( 'passport-google-oauth2' ).Strategy;
+  , GoogleStrategy   = require( 'passport-google-oauth2' ).OAuth2Strategy;
 
 // API Access link for creating client ID and secret:
 // https://code.google.com/apis/console/
@@ -24,6 +24,7 @@ var GOOGLE_CLIENT_SECRET  = "ZpjZ1OnWEb55SPaaKUilQGI0";
 //   serialized and deserialized.
 passport.serializeUser(function(user, done) {
   done(null, user);
+   console.log("User: "+ user.displayName); 
 });
 
 passport.deserializeUser(function(obj, done) {
