@@ -1,7 +1,7 @@
 {
-  "name": "Start on Heroku: Node.js",
-  "description": "A barebones Node.js app using Express 4",
-  "repository": "https://github.com/heroku/node-js-getting-started",
+  "name": "workout-log-generator",
+  "description": "Builds workout logs for google sheets",
+  "repository": "https://github.com/Hynnej/workout_log_generator.git",
   "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": ["node", "express", "static"],
   "image": "heroku/nodejs"
