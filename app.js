@@ -44,7 +44,7 @@ passport.use(new GoogleStrategy({
     //then edit your /etc/hosts local file to point on your private IP. 
     //Also both sign-in button + callbackURL has to be share the same url, otherwise two cookies will be created and lead to lost your session
     //if you use it.
-    callbackURL: "https://lifting-log-generator.herokuapp.com/auth/google/callback",
+    callbackURL: "https://workoutsheet.herokuapp.com/auth/google/callback",
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
@@ -73,7 +73,7 @@ app.use( session({
 	secret: 'cookie_secret',
 	name:   'kaas',
 	store:  new RedisStore({
-		host: 'https://lifting-log-generator.herokuapp.com/',
+		host: 'workoutsheet.herokuapp.com',
 		port: 5000
 	}),
 	proxy:  true,
