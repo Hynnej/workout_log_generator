@@ -73,7 +73,7 @@ app.use( session({
 	secret: 'cookie_secret',
 	name:   'kaas',
 	store:  new RedisStore({
-		host: 'workoutsheet.herokuapp.com',
+		host: '75.174.26.195',
 		port: 5000
 	}),
 	proxy:  true,
