@@ -24,7 +24,6 @@ var GOOGLE_CLIENT_SECRET  = "ZpjZ1OnWEb55SPaaKUilQGI0";
 //   serialized and deserialized.
 passport.serializeUser(function(user, done) {
   done(null, user);
-   console.log("User: "+ user.displayName); 
 });
 
 passport.deserializeUser(function(obj, done) {
@@ -45,7 +44,7 @@ passport.use(new GoogleStrategy({
     //then edit your /etc/hosts local file to point on your private IP. 
     //Also both sign-in button + callbackURL has to be share the same url, otherwise two cookies will be created and lead to lost your session
     //if you use it.
-    callbackURL: "https://workoutsheet.herokuapp.com/auth/google/callback",
+    callbackURL: "https://workoutsheet.herokuapp.com:5000/auth/google/callback",
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
@@ -111,11 +110,11 @@ app.get('/auth/google', passport.authenticate('google', { scope: [
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
-
-    res.redirect('/');
- );
+app.get( '/auth/google/callback', 
+    	passport.authenticate( 'google', { 
+    		successRedirect: '/',
+    		failureRedirect: '/login'
+})););
 
 app.get('/logout', function(req, res){
   req.logout();
