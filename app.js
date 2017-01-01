@@ -7,7 +7,7 @@ var express          = require( 'express' )
   , cookieParser     = require( 'cookie-parser' )
   , session          = require( 'express-session' )
   , RedisStore       = require( 'connect-redis' )( session )
-  , GoogleStrategy   = require( 'passport-google-oauth2' ).OAuth2Strategy;
+  , GoogleStrategy   = require( 'passport-google-oauth2' ).Strategy;
 
 // API Access link for creating client ID and secret:
 // https://code.google.com/apis/console/
@@ -113,9 +113,9 @@ app.get('/auth/google', passport.authenticate('google', { scope: [
 //   which, in this example, will redirect the user to the home page.
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
+
     res.redirect('/');
-  });
+ );
 
 app.get('/logout', function(req, res){
   req.logout();
