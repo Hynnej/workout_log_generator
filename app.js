@@ -74,7 +74,7 @@ app.use( session({
 	name:   'kaas',
 	store:  new RedisStore({
 		host: 'workoutsheet.herokuapp.com',
-		port: 3000
+		port: 5000
 	}),
 	proxy:  true,
     resave: true,
@@ -121,7 +121,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-server.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 5000);
 
 
 // Simple route middleware to ensure user is authenticated.
