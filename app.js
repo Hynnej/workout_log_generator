@@ -74,7 +74,7 @@ app.use( session({
 	name:   'kaas',
 	store:  new RedisStore({
 		host: 'workoutsheet.herokuapp.com',
-		port: 5000
+		port: 3000
 	}),
 	proxy:  true,
     resave: true,
@@ -100,10 +100,9 @@ app.get('/login', function(req, res){
 //   request.  The first step in Google authentication will involve
 //   redirecting the user to google.com.  After authorization, Google
 //   will redirect the user back to this application at /auth/google/callback
-app.get( '/auth/google/callback', 
-    	passport.authenticate( 'google', { 
-    		successRedirect: '/',
-    		failureRedirect: '/login'
+app.get('/auth/google', passport.authenticate('google', { scope: [
+       'https://www.googleapis.com/auth/plus.login',
+       'https://www.googleapis.com/auth/plus.profile.emails.read'] 
 }));
 
 // GET /auth/google/callback
@@ -122,7 +121,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-server.listen(process.env.PORT || 5000);
+server.listen(process.env.PORT || 3000);
 
 
 // Simple route middleware to ensure user is authenticated.
