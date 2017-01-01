@@ -83,7 +83,7 @@ app.use( session({
 app.use( passport.initialize());
 app.use( passport.session());
 
-app.get('/', function(req, res){
+app.get('/', ensureAuthenticated, function(req, res){
   res.render('index', { user: req.user });
 });
 
