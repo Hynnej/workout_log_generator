@@ -110,11 +110,11 @@ app.get('/auth/google', passport.authenticate('google', { scope: [
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-app.get( '/auth/google/callback', 
-    	passport.authenticate( 'google', { 
-    		successRedirect: '/account',
-    		failureRedirect: '/login'
-}));
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/account');
+  });
 
 app.get('/logout', function(req, res){
   req.logout();
