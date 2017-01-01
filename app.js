@@ -84,7 +84,7 @@ app.use( passport.initialize());
 app.use( passport.session());
 
 app.get('/', ensureAuthenticated, function(req, res){
-  res.render('index', { user: req.user });
+  res.render('account', { user: req.user });
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
@@ -113,7 +113,7 @@ app.get('/auth/google', passport.authenticate('google', { scope: [
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('/account');
+    res.redirect('/');
   });
 
 app.get('/logout', function(req, res){
